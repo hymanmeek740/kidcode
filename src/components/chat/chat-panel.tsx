@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { Undo2 } from "lucide-react";
+import { Undo2, PanelRight } from "lucide-react";
 import { MessageBubble } from "./message-bubble";
 import { ChatInput } from "./chat-input";
 import { ActivityIndicator } from "./activity-indicator";
@@ -14,9 +14,11 @@ interface ChatPanelProps {
   isLoading: boolean;
   activity: string;
   hasVersions: boolean;
+  showPreviewButton: boolean;
   onSend: (message: string) => void;
   onStop: () => void;
   onUndo: () => void;
+  onShowPreview: () => void;
 }
 
 export function ChatPanel({
@@ -24,9 +26,11 @@ export function ChatPanel({
   isLoading,
   activity,
   hasVersions,
+  showPreviewButton,
   onSend,
   onStop,
   onUndo,
+  onShowPreview,
 }: ChatPanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -39,6 +43,19 @@ export function ChatPanel({
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
+      {showPreviewButton && (
+        <div className="flex justify-end border-b px-3 py-1.5">
+          <Button
+            size="sm"
+            variant="ghost"
+            className="text-xs text-muted-foreground"
+            onClick={onShowPreview}
+          >
+            <PanelRight className="h-3.5 w-3.5 mr-1" />
+            Show preview
+          </Button>
+        </div>
+      )}
       <ScrollArea className="min-h-0 flex-1 p-4" ref={scrollRef}>
         <div className="mx-auto max-w-2xl space-y-4">
           {messages.length === 0 && (

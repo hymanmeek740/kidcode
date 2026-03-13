@@ -22,6 +22,7 @@ function HomeContent() {
   const [previewRefreshKey, setPreviewRefreshKey] = useState(0);
   const [previewFile, setPreviewFile] = useState<string>("index.html");
   const [hasVersions, setHasVersions] = useState(false);
+  const [hasPreviewFile, setHasPreviewFile] = useState(false);
 
   const handleTitle = useCallback(
     async (title: string) => {
@@ -43,6 +44,7 @@ function HomeContent() {
       setPreviewFile(fileName);
     }
     setShowPreview(true);
+    setHasPreviewFile(true);
     setPreviewRefreshKey((k) => k + 1);
     setHasVersions(true);
   }, []);
@@ -66,6 +68,7 @@ function HomeContent() {
     if (activeProjectId) {
       chat.loadHistory();
       setShowPreview(false);
+      setHasPreviewFile(false);
       setPreviewRefreshKey(0);
       setPreviewFile("index.html");
 
@@ -83,6 +86,7 @@ function HomeContent() {
           if (htmlFile) {
             setPreviewFile(htmlFile);
             setShowPreview(true);
+            setHasPreviewFile(true);
             setPreviewRefreshKey((k) => k + 1);
           }
         })
@@ -159,9 +163,11 @@ function HomeContent() {
                 isLoading={chat.isLoading}
                 activity={chat.activity}
                 hasVersions={hasVersions}
+                showPreviewButton={!showPreview && hasPreviewFile}
                 onSend={chat.sendMessage}
                 onStop={chat.stop}
                 onUndo={handleUndo}
+                onShowPreview={() => setShowPreview(true)}
               />
             </div>
             {showPreview && (
