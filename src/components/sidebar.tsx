@@ -65,7 +65,9 @@ export function Sidebar({
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onDeleteProject(project.id);
+                  if (window.confirm(`Delete "${project.name}"?`)) {
+                    onDeleteProject(project.id);
+                  }
                 }}
               >
                 <Trash2 className="h-3 w-3" />
