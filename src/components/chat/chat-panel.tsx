@@ -64,6 +64,7 @@ export function ChatPanel({
             onStop={onStop}
             isLoading={isLoading}
           />
+          {/* TODO: re-enable undo button once we have a good UX for it
           {hasVersions && !isLoading && (
             <div className="mt-2 flex justify-center">
               <Button
@@ -77,6 +78,7 @@ export function ChatPanel({
               </Button>
             </div>
           )}
+          */}
         </div>
       </div>
     </div>
