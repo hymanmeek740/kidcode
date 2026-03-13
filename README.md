@@ -122,3 +122,7 @@ The `stream-json` output emits one JSON object per line with types like `assista
 - Detect tool use (Write, Edit, Bash) and show activity indicators
 - Detect file changes and auto-refresh the preview iframe
 - Extract a title from the first response to name the project
+
+## Built with
+
+This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Obra's Superpowers](https://github.com/obra/claude-plugins-official) skills.
