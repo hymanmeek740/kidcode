@@ -2,6 +2,8 @@
 
 A kid-friendly web app that wraps the [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) to let kids build things with AI through a chat interface. Think of it as Claude Desktop for kids — type what you want to build, and watch it come to life in a split-view preview.
 
+> **⚠️ Intended for local use only.** KidCode runs Claude Code with `--dangerously-skip-permissions`, meaning Claude can read, write, and execute anything on the host without confirmation. Do not expose this to the internet. Consider running it inside a sandbox, VM, or container.
+
 ## How it works
 
 KidCode is a Next.js app with a three-panel layout:
@@ -125,4 +127,4 @@ The `stream-json` output emits one JSON object per line with types like `assista
 
 ## Built with
 
-This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Obra's Superpowers](https://github.com/obra/claude-plugins-official) skills.
+This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Superpowers](https://github.com/obra/claude-plugins-official).
