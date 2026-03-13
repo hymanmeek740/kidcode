@@ -90,6 +90,17 @@ export async function POST(
   const history = getChatHistory(id);
   const isFirstMessage = history.filter((m) => m.role === "user").length === 1;
 
+  // Build prompt with conversation history so Claude has context
+  let prompt = userMessage;
+  // History includes the user message we just appended, so grab everything before it
+  const priorMessages = history.slice(0, -1);
+  if (priorMessages.length > 0) {
+    const historyText = priorMessages
+      .map((m) => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`)
+      .join("\n\n");
+    prompt = `Here is our conversation so far:\n\n${historyText}\n\nUser: ${userMessage}`;
+  }
+
   const encoder = new TextEncoder();
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
@@ -99,7 +110,7 @@ export async function POST(
   let savedAssistant = false;
 
   // Start claude process with event callback
-  startClaude(id, projectDir, userMessage, isFirstMessage, (event: StreamEvent) => {
+  startClaude(id, projectDir, prompt, isFirstMessage, (event: StreamEvent) => {
     // Handle title updates
     if (event.type === "title") {
       updateProjectName(id, event.content);
