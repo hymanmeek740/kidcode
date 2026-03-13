@@ -128,4 +128,4 @@ The `stream-json` output emits one JSON object per line with types like `assista
 
 ## Built with
 
-This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Superpowers](https://github.com/obra/claude-plugins-official).
+This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Superpowers](https://github.com/obra/superpowers).
